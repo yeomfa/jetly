@@ -1,30 +1,32 @@
 local palette = {
-  background_jet = "#292929",
-  dark_jet = "#1c1e21",
-  medium_jet = "#42454c",
-  comment_coral = "#607590",
-  yellow_minion = "#ffe668",
-  blue_navy = "#2f7ad0",
-  blue_light = "#bcd3ee",
-  orange_portland = "#f1602f",
-  red_geranium = "#e12727",
-  red_imperial = "#e43b3b",
-  yellow_sunglow = "#fdcd1c",
-  foreground_milk = "#eeedc8",
+  background_jet = "#192125",
+  low_jet = "#29353D",
+  low_green = "#4A695C",
+  dark_jet = "#151B1E",
+  medium_jet = "#1F282E",
+  onyx_jet = "#29353D",
+  high_jet = "#394A56",
+  gray_jet = "#B1BEC7",
+  comment_coral = "#526A7A",
+  purple_clare = "#9D60BE",
+  blue_munsell = "#439FBD",
+  blue_pewter = "#85BCC7",
+  green_sea = "#73c5a1",
+  yellow_minion = "#AEC785",
+  rose_asian = "#EB818A",
+  orange_yellow = "#E39B3D",
+  foreground_milk = "#DFEDC7",
   none = "NONE",
 }
 
 palette.diff = {
-  add = "#2F382C",
-  change = "#2E4B4C",
-  delete = "#4c2e2e",
-  text = "#2F364D",
+  add = "#1A2621",
+  change = "#1A1C26",
+  delete = "#26201A",
+  text = "#242329",
 }
 
-M = {}
-
-function M.config(config)
-  config = config or require("jetly.config")
+M = {} function M.config(config) config = config or require("jetly.config")
   local colors
   colors = palette
   if config.transparent then
