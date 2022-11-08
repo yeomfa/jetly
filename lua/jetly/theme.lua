@@ -150,10 +150,10 @@ function M.setup(config)
     -- Debug          { Special }, --   Debugging statements
 
     -- Diff
-    DiffAdd = { fg = c.blue_pewter, bg = c.diff.add },
-    DiffChange = { fg = c.blue_munsell, bg = c.diff.change },
-    DiffDelete = { fg = c.rose_asian, bg = c.diff.delete },
-    DiffText = { bg = c.diff.text },
+    DiffAdd = { fg = c.blue_pewter, bg = c.background_jet },
+    DiffChange = { fg = c.blue_munsell, bg = c.background_jet },
+    DiffDelete = { fg = c.rose_asian, bg = c.background_jet },
+    DiffText = { bg = c.background_jet },
 
     -- NvimTree
     NvimTreeNormal = { fg = c.foreground_milk , bg = c.dark_jet },
@@ -174,7 +174,31 @@ function M.setup(config)
     IndentBlanklineSpaceChar = { fg = c.low_jet },
     IndentBlanklineContextChar = { fg = c.low_green },
 
+    -- Dashboard
+    DashboardShortCut = { fg = c.blue_munsell, bg = c.onyx_jet, style = "bold" },
+    DashboardHeader = { fg = c.foreground_milk },
+    DashboardCenter = { fg = c.foreground_milk },
+    DashboardFooter = { fg = c.yellow_minion, style = "italic" },
+
   }
+  -- Telescope
+  if config.telescope then
+    theme.base = vim.tbl_extend("force", theme.base, {
+      TelescopeBorder = { fg = c.dark_jet, bg = c.dark_jet },
+      TelescopePromptCounter = { fg = c.foreground_milk, bg = c.high_jet },
+      TelescopePromptBorder = { fg = c.high_jet, bg = c.high_jet },
+      TelescopePromptNormal = { fg = c.foreground_milk, bg = c.high_jet },
+      TelescopePromptPrefix = { fg = c.blue_munsell, bg = c.high_jet },
+
+      TelescopeNormal = { bg = c.dark_jet },
+      TelescopePreviewTitle = { bg = c.dark_jet },
+      TelescopePromptTitle = { fg = c.foreground_milk, bg = c.high_jet, style = {"italic"} },
+      TelescopeResultsTitle = { fg = c.dark_jet, bg = c.foreground_milk },
+
+      TelescopeSelection = { fg = c.foreground_milk, bg = c.medium_jet }
+
+    })
+  end
 
   return theme
 end

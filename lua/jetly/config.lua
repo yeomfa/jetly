@@ -15,7 +15,7 @@ end
 
 config = {
   transparent = opt("transparent", false),
-  telescope = opt("telescope", false),
+  telescope = opt("telescope", true),
   rustic_mode = opt("rustic_mode", false),
   normal_icons = opt("normal_icons", false),
 }

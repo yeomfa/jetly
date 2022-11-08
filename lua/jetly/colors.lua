@@ -1,8 +1,8 @@
 local palette = {
-  background_jet = "#192125",
+  background_jet = "#212B30",
   low_jet = "#29353D",
   low_green = "#4A695C",
-  dark_jet = "#151B1E",
+  dark_jet = "#1C2429",
   medium_jet = "#1F282E",
   onyx_jet = "#29353D",
   high_jet = "#394A56",
@@ -17,13 +17,6 @@ local palette = {
   orange_yellow = "#E39B3D",
   foreground_milk = "#DFEDC7",
   none = "NONE",
-}
-
-palette.diff = {
-  add = "#1A2621",
-  change = "#1A1C26",
-  delete = "#26201A",
-  text = "#242329",
 }
 
 M = {} function M.config(config) config = config or require("jetly.config")
