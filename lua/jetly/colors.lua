@@ -1,11 +1,11 @@
 local palette = {
   background_jet = "#212B30",
   low_jet = "#29353D",
-  low_green = "#4A695C",
   dark_jet = "#1C2429",
   medium_jet = "#1F282E",
   onyx_jet = "#29353D",
   high_jet = "#394A56",
+  low_green = "#4A695C",
   gray_jet = "#B1BEC7",
   comment_coral = "#526A7A",
   purple_clare = "#9D60BE",
@@ -14,8 +14,11 @@ local palette = {
   green_sea = "#73c5a1",
   yellow_minion = "#AEC785",
   rose_asian = "#EB818A",
+  red_asian = "#FF3434",
+  yellow_inspired = "#E7CF57",
   orange_yellow = "#E39B3D",
-  foreground_milk = "#DFEDC7",
+  orange_mantis = "#F88944",
+  foreground_jet = "#DFEDC7",
   none = "NONE",
 }
 

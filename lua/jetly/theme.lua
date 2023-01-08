@@ -72,23 +72,26 @@ function M.setup(config)
   theme.defer = {}
   theme.base = {
     -- EDITOR
-    Normal = { bg = c.background_jet, fg = c.foreground_milk },
+    Normal = { bg = c.background_jet, fg = c.foreground_jet },
     NormalFloat = { bg = c.dark_jet },
     Comment = { fg = c.comment_coral, style = "italic" },
     CursorLine = { bg = c.medium_jet },
+    Cursor = { fg = c.background_jet, bg = c.green_sea },
     EndOfBuffer = { fg = c.background_jet },
     Directory = { fg = c.blue_pewter },
     Visual = { bg = c.onyx_jet },
     LineNr = { fg = c.high_jet },
     CursorLineNr = { fg = c.blue_pewter },
-    Underlined = { fg = c.green_sea, style = "underline" }, -- Text that stands out, HTML links
+    Underlined = { fg = c.green_sea, style = "underline" },
+    Title = { fg = c.foreground_jet },
 
+    Label = { fg = c.green_sea },
     TabLine = { bg = c.background_jet },
     TabLineFill = { bg = c.background_jet },
-    TabLineSel = { fg = c.foreground_milk, bg = c.background_jet },
+    TabLineSel = { fg = c.foreground_jet, bg = c.background_jet },
 
-    VertSplit = { fg = c.low_jet },
-    Terminal = { fg = c.foreground_milk, bg = c.background_jet },
+    VertSplit = { fg = c.background_jet },
+    Terminal = { fg = c.foreground_jet, bg = c.background_jet },
 
     Pmenu = { fg = c.blue_pewter, bg = c.dark_jet },
     PmenuSel = { fg = c.medium_jet, bg = c.green_sea },
@@ -96,58 +99,71 @@ function M.setup(config)
     ColorColumn = { bg = c.background_jet },
     SignColumn = { bg = c.background_jet },
     FoldColumn = { bg = c.background_jet },
+    Conceal = { fg = c.comment_coral },
+
+    TabLine = { bg = c.dark_jet, fg = c.comment_coral },
+    TabLineFill = { bg = c.background_jet },
+    TabLineSel = { fg = c.blue_pewter, bg = c.background_jet },
+
+    ErrorMsg = { fg = c.rose_asian },
+    Folded = { fg = c.comment_coral },
+    IncSearch = { bg = c.gray_jet },
+    MatchParen = { bg = c.blue_munsell, style = "underline" },
+    NonText = { fg = c.comment_coral },
+    Question = { fg = c.purple_clare },
+    QuickFixLine = { fg = c.background_jet, bg = c.yellow_inspired },
+    Search = { bg = c.gray_jet },
+    SpecialKey = { fg = c.comment_coral },
+    SpellBad = { fg = c.rose_asian, style = "underline" },
+    SpellCap = { fg = c.yellow_inspired },
+    SpellLocal = { fg = c.yellow_inspired },
+    SpellRare = { fg = c.yellow_inspired },
+    StatusLine = { fg = c.foreground_jet, bg = c.background_jet },
+    StatusLineNC = { fg = c.comment_coral },
+    StatusLineTerm = { fg = c.foreground_jet, bg = c.gray_jet },
+    StatusLineTermNC = { fg = c.gray_jet },
+    VisualNOS = { fg = c.gray_jet },
+    WarningMsg = { fg = c.yellow_inspired },
+    WildMenu = { fg = c.background_jet, bg = c.blue_munsell },
 
     -- CODE
     Constant = {},
+    Character = { fg = c.yellow_minion },
     String = { fg = c.yellow_minion },
-    Number = { fg = c.orange_yellow }, --   A number constant: 234, 0xff
+    Number = { fg = c.orange_mantis },
+    Boolean = { fg = c.orange_yellow },
+    Float = { fg = c.orange_yellow },
 
     Function = { fg = c.rose_asian },
     Identifier = { fg = c.blue_pewter },
 
     Statement = { fg = c.green_sea },
-    Operator = { fg = c.foreground_milk }, --   "sizeof", "+", "*", etc.
+    Conditional = { fg = c.green_sea },
+    Repeat = { fg = c.green_sea },
+    Operator = { fg = c.foreground_jet },
+    Keyword = { fg = c.green_sea, style = 'italic' },
+    Exception = { fg = c.purple_clare },
     
-    Include = { fg = c.green_sea},
+    Include = { fg = c.green_sea },
+    PreProc = { fg = c.rose_asian },
+    Define = { fg = c.green_sea },
+    Macro = { fg = c.purple_clare },
+    PreCondit = { fg = c.purple_clare },
 
     Type = { fg = c.blue_munsell }, 
+    Typedef = { fg = c.green_sea },
+    StorageClass = { fg = c.blue_pewter },
+    Structure = { fg = c.green_sea },
 
-    Special = { fg = c.gray_jet}, --   Character that needs attention
-    SpecialChar = { fg = c.blue_pewter }, --   Special character in a constant
-    -- Constant       { fg = colors.portland_orange },
-    -- String         { fg = colors.lime_green}, --   A string constant: "this is a string"
-    -- Character      { String }, --   A character constant: 'c', '\n'
-    -- Boolean        { fg = colors.amethyst_purple}, --   A boolean constant: TRUE, false
-    -- Float          { Number }, --   A floating point constant: 2.3e10
+    Special = { fg = c.orange_yellow },
+    SpecialChar = { fg = c.blue_pewter },
+    Tag = { fg = c.orange_yellow },
+    Delimiter = { fg = c.gray_jet },
+    SpecialComment = { fg = c.orange_yellow },
+    Debug = { fg = c.orange_yellow },
 
-    -- Identifier     { fg = colors.pewter_blue }, -- (*) Any variable name
-    -- Function       { fg = colors.salmon_rose }, --   Function name (also: methods for classes)
-
-    -- Statement      { fg = colors.portland_orange }, -- (*) Any statement
-    -- Conditional    { Statement }, --   if, then, else, endif, switch, etc.
-    -- Repeat         { Statement }, --   for, do, while, etc.
-    -- Label          { Statement }, --   case, default, etc.
-    -- Operator       { fg = colors.fg_vintage }, --   "sizeof", "+", "*", etc.
-    -- Keyword        { Statement }, --   any other keyword
-    -- Exception      { Statement }, --   try, catch, throw
-    
-    -- PreProc        { fg = colors.portland_orange }, -- (*) Generic Preprocessor
-    -- Include        { PreProc }, --   Preprocessor #include
-    -- Define         { PreProc }, --   Preprocessor #define
-    -- Macro          { PreProc }, --   Same as Define
-    -- PreCondit      { PreProc }, --   Preprocessor #if, #else, #endif, etc.
-    
-    -- Type           { fg = colors.sea_green }, -- (*) int, long, char, etc.
-    -- StorageClass   { Type }, --   static, register, volatile, etc.
-    -- Structure      { Type }, --   struct, union, enum, etc.
-    -- Typedef        { Type }, --   A typedef
-
-    -- Special        { fg = colors.pewter_blue }, -- (*) Any special symbol
-    -- SpecialChar    { fg = colors.cascada_blue }, --   Special character in a constant
-    -- Tag            { Special }, --   You can use CTRL-] on this
-    -- Delimiter      { fg = colors.fg_vintage }, --   Character that needs attention
-    -- SpecialComment { Special }, --   Special things inside a comment (e.g. '\n')
-    -- Debug          { Special }, --   Debugging statements
+    MoreMsg = { fg = c.foreground_jet },
+    Todo = { fg = c.purple_clare },
 
     -- Diff
     DiffAdd = { fg = c.blue_pewter, bg = c.background_jet },
@@ -155,10 +171,85 @@ function M.setup(config)
     DiffDelete = { fg = c.rose_asian, bg = c.background_jet },
     DiffText = { bg = c.background_jet },
 
+    -- TreeSitter
+    ["@boolean"] = { fg = c.orange_yellow },
+    ["@define"] = { fg = c.red_asian },
+    ["@comment"] = { fg = c.comment_coral, style = config.comment_style },
+    ["@error"] = { fg = c.red_asian },
+    ["@punctuation.delimiter"] = { fg = c.foreground_jet },
+    ["@punctuation.bracket"] = { fg = c.foreground_jet },
+    ["@punctuation.special"] = { fg = c.foreground_jet },
+    ["@constant"] = { fg = c.rose_asian, style = "bold" },
+    ["@const.builtin"] = { fg = c.rose_asian },
+    ["@string"] = { fg = c.yellow_minion, style = config.string_style },
+    ["@character"] = { fg = c.yellow_minion },
+    ["@number"] = { fg = c.orange_mantis },
+    ["@namespace"] = { fg = c.blue_pewter },
+    ["@func.builtin"] = { fg = c.yellow_inspired },
+    ["@function"] = { fg = c.yellow_inspired, style = config.function_style },
+    ["@func.macro"] = { fg = c.yellow_inspired },
+    ["@parameter"] = { fg = c.blue_pewter, style = "nocombine" },
+    ["@parameter.reference"] = { fg = c.dark_gray },
+    ["@method"] = { fg = c.yellow_inspired, style = config.function_style },
+    ["@field"] = { fg = c.blue_pewter },
+    ["@property"] = { fg = c.blue_pewter },
+    ["@constructor"] = { fg = c.green_sea, style = "nocombine" },
+    ["@conditional"] = { fg = c.red_asian },
+    ["@repeat"] = { fg = c.red_asian },
+    ["@label"] = { fg = c.blue_pewter },
+    ["@keyword"] = { fg = c.red_asian, style = config.keyword_style },
+    ["@keyword.return"] = { fg = c.green_sea, style = config.keyword_style },
+    ["@keyword.function"] = { fg = c.red_asian, style = config.keyword_style },
+    ["@keyword.operator"] = { fg = c.red_asian },
+    ["@operator"] = { fg = c.foreground_jet },
+    ["@exception"] = { fg = c.red_asian },
+    ["@type"] = { fg = c.green_sea },
+    ["@type.builtin"] = { fg = c.blue_pewter },
+    ["@type.qualifier"] = { fg = c.orange_mantis },
+    ["@storageclass.lifetime"] = {fg = c.orange_mantis},
+    ["@structure"] = { fg = c.blue_pewter },
+    ["@variable"] = { fg = c.blue_pewter, style = config.variable_style },
+    ["@variable.builtin"] = { fg = c.blue_pewter },
+    ["@text"] = { fg = c.yellow_inspired },
+    ["@text.strong"] = { fg = c.yellow_inspired },
+    ["@text.emphasis"] = { fg = c.yellow_inspired },
+    ["@text.underline"] = { fg = c.yellow_inspired },
+    ["@text.title"] = { fg = c.yellow_inspired },
+    ["@text.literal"] = { fg = c.yellow_inspired },
+    ["@uri"] = { fg = c.yellow_inspired },
+    ["@tag"] = { fg = c.green_sea },
+    ["@tag.delimiter"] = { fg = c.comment },
+    ["@tag.attribute"] = { fg = c.yellow_inspired },
+
+    -- per language TreeSitter
+    ["@variable.python"] = { fg = c.foreground_jet, style = "NONE" },
+    pythonDecorator = { fg = c.orange_mantis, style = "bold" },
+    ["@variable.rust"] = { fg = c.foreground_jet, style = "NONE" },
+    ["@conditional.javascript"] = { fg = c.red_asian },
+    ["@variable.javascript"] = { fg = c.blue_munsell },
+
+    htmlArg = { fg = c.yellow_inspired },
+    htmlBold = { fg = c.yellow_inspired, style = "bold" },
+    htmlEndTag = { fg = c.foreground_jet },
+    htmlH1 = { fg = c.foreground_jet },
+    htmlH2 = { fg = c.foreground_jet },
+    htmlH3 = { fg = c.foreground_jet },
+    htmlH4 = { fg = c.foreground_jet },
+    htmlH5 = { fg = c.foreground_jet },
+    htmlH6 = { fg = c.foreground_jet },
+    htmlItalic = { fg = c.purple_clare, style = "italic" },
+    htmlLink = { fg = c.foreground_jet, style = "underline" },
+    htmlSpecialChar = { fg = c.yellow_inspired },
+    htmlSpecialTagName = { fg = c.blue_pewter },
+    htmlTag = { fg = c.gray_jet },
+    htmlTagN = { fg = c.orange_mantis },
+    htmlTagName = { fg = c.orange_mantis },
+    htmlTitle = { fg = c.foreground_jet },
+
     -- NvimTree
-    NvimTreeNormal = { fg = c.foreground_milk , bg = c.dark_jet },
+    NvimTreeNormal = { fg = c.foreground_jet , bg = c.dark_jet },
     NvimTreeNormalNC = { bg = c.dark_jet },
-    NvimTreeFolderIcon = { fg = c.blue_munsell },
+    NvimTreeFolderIcon = { fg = c.yellow_inspired },
     NvimTreeExecFile = {},
     NvimTreeRootFolder = {},
 
@@ -176,8 +267,8 @@ function M.setup(config)
 
     -- Dashboard
     DashboardShortCut = { fg = c.blue_munsell, bg = c.onyx_jet, style = "bold" },
-    DashboardHeader = { fg = c.foreground_milk },
-    DashboardCenter = { fg = c.foreground_milk },
+    DashboardHeader = { fg = c.foreground_jet },
+    DashboardCenter = { fg = c.green_sea },
     DashboardFooter = { fg = c.yellow_minion, style = "italic" },
 
   }
@@ -185,17 +276,17 @@ function M.setup(config)
   if config.telescope then
     theme.base = vim.tbl_extend("force", theme.base, {
       TelescopeBorder = { fg = c.dark_jet, bg = c.dark_jet },
-      TelescopePromptCounter = { fg = c.foreground_milk, bg = c.high_jet },
+      TelescopePromptCounter = { fg = c.foreground_jet, bg = c.high_jet },
       TelescopePromptBorder = { fg = c.high_jet, bg = c.high_jet },
-      TelescopePromptNormal = { fg = c.foreground_milk, bg = c.high_jet },
+      TelescopePromptNormal = { fg = c.foreground_jet, bg = c.high_jet },
       TelescopePromptPrefix = { fg = c.blue_munsell, bg = c.high_jet },
 
       TelescopeNormal = { bg = c.dark_jet },
       TelescopePreviewTitle = { bg = c.dark_jet },
-      TelescopePromptTitle = { fg = c.foreground_milk, bg = c.high_jet, style = {"italic"} },
-      TelescopeResultsTitle = { fg = c.dark_jet, bg = c.foreground_milk },
+      TelescopePromptTitle = { fg = c.foreground_jet, bg = c.high_jet, style = {"italic"} },
+      TelescopeResultsTitle = { fg = c.dark_jet, bg = c.foreground_jet },
 
-      TelescopeSelection = { fg = c.foreground_milk, bg = c.medium_jet }
+      TelescopeSelection = { fg = c.foreground_jet, bg = c.medium_jet }
 
     })
   end
