@@ -79,16 +79,13 @@ function M.setup(config)
     Cursor = { fg = c.background_jet, bg = c.green_sea },
     EndOfBuffer = { fg = c.background_jet },
     Directory = { fg = c.blue_pewter },
-    Visual = { bg = c.onyx_jet },
-    LineNr = { fg = c.high_jet },
+    Visual = { bg = c.blue_base },
+    LineNr = { fg = c.comment_coral },
     CursorLineNr = { fg = c.blue_pewter },
     Underlined = { fg = c.green_sea, style = "underline" },
     Title = { fg = c.foreground_jet },
 
     Label = { fg = c.green_sea },
-    TabLine = { bg = c.background_jet },
-    TabLineFill = { bg = c.background_jet },
-    TabLineSel = { fg = c.foreground_jet, bg = c.background_jet },
 
     VertSplit = { fg = c.background_jet },
     Terminal = { fg = c.foreground_jet, bg = c.background_jet },
@@ -108,7 +105,7 @@ function M.setup(config)
     ErrorMsg = { fg = c.rose_asian },
     Folded = { fg = c.comment_coral },
     IncSearch = { bg = c.gray_jet },
-    MatchParen = { bg = c.blue_munsell, style = "underline" },
+    MatchParen = { fg = c.foreground_jet, bg = c.high_jet, style = "underline" },
     NonText = { fg = c.comment_coral },
     Question = { fg = c.purple_clare },
     QuickFixLine = { fg = c.background_jet, bg = c.yellow_inspired },
@@ -147,7 +144,7 @@ function M.setup(config)
     Include = { fg = c.green_sea },
     PreProc = { fg = c.rose_asian },
     Define = { fg = c.green_sea },
-    Macro = { fg = c.purple_clare },
+    Macro = { fg = c.orange_mantis },
     PreCondit = { fg = c.purple_clare },
 
     Type = { fg = c.blue_munsell }, 
@@ -171,9 +168,16 @@ function M.setup(config)
     DiffDelete = { fg = c.rose_asian, bg = c.background_jet },
     DiffText = { bg = c.background_jet },
 
+    -- LSP Native
+    DiagnosticError = { fg = c.red_asian, bg = c.red_base },
+    DiagnosticWarn = { fg = c.orange_advise, bg = c.orange_base },
+    DiagnosticInfo = { fg = c.green_sea, bg = c.green_base },
+    DiagnosticHint = { fg = c.blue_pewter, bg = c.blue_base },
+    DiagnosticUnnecessary = { fg = c.orange_advise, bg = c.orange_base },
+
     -- TreeSitter
     ["@boolean"] = { fg = c.orange_yellow },
-    ["@define"] = { fg = c.red_asian },
+    ["@define"] = { fg = c.green_sea },
     ["@comment"] = { fg = c.comment_coral, style = config.comment_style },
     ["@error"] = { fg = c.red_asian },
     ["@punctuation.delimiter"] = { fg = c.foreground_jet },
@@ -221,12 +225,27 @@ function M.setup(config)
     ["@tag.delimiter"] = { fg = c.comment },
     ["@tag.attribute"] = { fg = c.yellow_inspired },
 
-    -- per language TreeSitter
+    -- Languages 
     ["@variable.python"] = { fg = c.foreground_jet, style = "NONE" },
     pythonDecorator = { fg = c.orange_mantis, style = "bold" },
     ["@variable.rust"] = { fg = c.foreground_jet, style = "NONE" },
     ["@conditional.javascript"] = { fg = c.red_asian },
-    ["@variable.javascript"] = { fg = c.blue_munsell },
+    ["@variable.javascript"] = { fg = c.blue_pewter },
+
+    ['@lsp.type.namespace'] = { link =  '@namespace'},
+    ['@lsp.type.type'] = { link = '@type'},
+    ['@lsp.type.class'] = { link = '@type'},
+    ['@lsp.type.enum'] = { link = '@type'},
+    ['@lsp.type.interface'] = { link = '@type'},
+    ['@lsp.type.struct'] = { link = '@structure'},
+    ['@lsp.type.parameter'] = { link = '@parameter'},
+    ['@lsp.type.variable'] = { link = '@variable'},
+    ['@lsp.type.property'] = { link = '@property'},
+    ['@lsp.type.enumMember'] = { link = '@constant'},
+    ['@lsp.type.function'] = { link = '@function'},
+    ['@lsp.type.method'] = { link = '@method'},
+    ['@lsp.type.macro'] = { link = '@macro'},
+    ['@lsp.type.decorator'] = { link = '@function'},
 
     htmlArg = { fg = c.yellow_inspired },
     htmlBold = { fg = c.yellow_inspired, style = "bold" },
@@ -265,11 +284,16 @@ function M.setup(config)
     IndentBlanklineSpaceChar = { fg = c.low_jet },
     IndentBlanklineContextChar = { fg = c.low_green },
 
-    -- Dashboard
-    DashboardShortCut = { fg = c.blue_munsell, bg = c.onyx_jet, style = "bold" },
-    DashboardHeader = { fg = c.foreground_jet },
-    DashboardCenter = { fg = c.green_sea },
-    DashboardFooter = { fg = c.yellow_minion, style = "italic" },
+    -- Dashboard General
+    DashboardHeader = { fg = c.foreground_jet, style = "italic" },
+    DashboardFooter = { fg = c.green_sea, style = "italic" },
+    DashboardShortCut = { fg = c.blue_pewter, bg = c.blue_base, style = "bold" },
+
+    -- Dashboard Hyper
+    DashboardProjectTitleIcon = { fg = c.blue_pewter },
+    DashboardFiles = { fg = c.gray_jet },
+    DashboardMruTitle = { fg = c.blue_pewter, style = "italic" },
+    DashboardShortCutIcon = { fg = c.blue_munsell, },
 
   }
   -- Telescope

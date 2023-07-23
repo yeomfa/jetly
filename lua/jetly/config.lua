@@ -23,6 +23,7 @@ config = {
   function_style = opt("function_style", "italic"),
   keyword_style = opt("keyword_style", "italic"),
   variable_style = opt("variable_style", "italic"),
+  variant = opt("variant", "bluesic"),
 }
 
 return config
